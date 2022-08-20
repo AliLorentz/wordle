@@ -2,8 +2,32 @@
   border: 2px solid rgb(211, 214, 218);
 }
 
+.write{
+  border: 2px solid rgb(211, 214, 218);
+}
+
+.correct{
+  background-color: #6aaa64;
+  color: white;
+  border: 2px solid #6aaa64;
+}
+
+.incorrect{
+  background-color: #787c7e;
+  border: 2px solid #787c7e;
+  color: white;
+}
+
+.cerca{
+  background-color: #c9b458;
+  border: 2px solid #c9b458;
+  color: white;
+}
+
+
 .boxLetter{
-  height: 38px;;
+  height: 35px;
+  padding-right: 45px;
 }
 
 /**rgb(135, 138, 140)*/
