@@ -30,4 +30,10 @@
   padding-right: 45px;
 }
 
+.fadeAlert{
+  position: relative;
+  left: -2000px;
+  width: 500px;
+}
+
 /**rgb(135, 138, 140)*/

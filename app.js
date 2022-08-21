@@ -59,13 +59,11 @@ async function verifyWorkd(wordSearch) {
         correctLetters = 0
         WORD_ARRAY = WORD.split('');
       }
-
-
-    }).then(
-      e => {
-        isLoading = false;
-      }
-    )
+    }).catch(e => {
+      let div = document.getElementById('alert');
+      div.classList.remove('fadeAlert');
+      ;
+    })
 }
 
 
@@ -110,6 +108,14 @@ function allowOnlyAlphabets(event) {
     return true;
   else
     return false;
+}
+
+const alertTrigger = document.getElementById('btnAlert')
+if (alertTrigger) {
+  alertTrigger.addEventListener('click', () => {
+    let elemento = document.getElementById(`alert`);
+    elemento.className += " fadeAlert";
+  })
 }
 
 //getWord();
