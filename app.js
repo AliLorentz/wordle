@@ -118,4 +118,4 @@ if (alertTrigger) {
   })
 }
 
-//getWord();
+getWord();
