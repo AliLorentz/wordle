@@ -38,23 +38,49 @@ async function getWord() {
   fetch('https://palabras-aleatorias-public-api.herokuapp.com/random-by-length?length=6')
     .then(response => response.json())
     .then(data => {
-      /*PALABRA = data.body.Word;
+      WORD = data.body.Word;
       console.log(data.body.Word);
-      PALABRA_ARRAY = PALABRA.split('');*/
+      WORD_ARRAY = WORD.split('');
       isLoading = false;
     })
 }
+
+async function verifyWorkd(wordSearch) {
+  isLoading = true;
+  fetch(`https://palabras-aleatorias-public-api.herokuapp.com/palabras-aleatorias?Word=${wordSearch}`)
+    .then(response => response.json())
+    .then(data => {
+      isLoading = false;
+      if (data.body[0].Word) {
+        numberRow = 1;
+        validateGoodLetters();
+        validateWord();
+        numberColumn++;
+        correctLetters = 0
+        WORD_ARRAY = WORD.split('');
+      }
+
+
+    }).then(
+      e => {
+        isLoading = false;
+      }
+    )
+}
+
+
 
 document.addEventListener('keydown', (event) => {
 
   var keyValue = event.key;
   if (event.key === 'Enter' && numberRow === 7 && isLoading === false) {
-    numberRow = 1;
-    validateGoodLetters();
-    validateWord();
-    numberColumn++;
-    correctLetters = 0
-    WORD_ARRAY = WORD.split('');
+    let wordSearch = '';
+    for (let i = 1; i <= 6; i++) {
+      let letter = document.getElementById(`${numberColumn}${i}`).innerHTML;
+      wordSearch = wordSearch + letter
+
+    }
+    this.verifyWorkd(wordSearch.toLocaleLowerCase())
   }
 
 
@@ -86,4 +112,4 @@ function allowOnlyAlphabets(event) {
     return false;
 }
 
-getWord();
+//getWord();
